@@ -2,7 +2,7 @@ object FrmPrincipal: TFrmPrincipal
   Left = 0
   Top = 0
   Caption = 'Teste Delphi'
-  ClientHeight = 283
+  ClientHeight = 280
   ClientWidth = 632
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -38,15 +38,21 @@ object FrmPrincipal: TFrmPrincipal
       OnClick = btnAtualizarClick
     end
     object StringGrid1: TStringGrid
+      Tag = 6
       Left = 8
       Top = 40
       Width = 512
       Height = 200
-      ColCount = 1
+      ColCount = 6
       FixedCols = 0
       RowCount = 2
       TabOrder = 1
       ColWidths = (
+        64
+        64
+        64
+        64
+        64
         64)
       RowHeights = (
         24

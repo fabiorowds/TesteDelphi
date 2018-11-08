@@ -572,6 +572,9 @@
                 <Platform value="Win32">True</Platform>
                 <Platform value="Win64">False</Platform>
             </Platforms>
+            <UnitTesting>
+                <TestProjectName>C:\Users\Delux\Documents\TesteDelphi\Test\prjTesteDelphiTests.dproj</TestProjectName>
+            </UnitTesting>
         </BorlandProject>
         <ProjectFileVersion>12</ProjectFileVersion>
     </ProjectExtensions>
