@@ -1,0 +1,77 @@
+USE [TesteDelphi]
+GO
+/****** Object:  User [teste]    Script Date: 08/11/2018 19:45:11 ******/
+CREATE USER [teste] FOR LOGIN [teste] WITH DEFAULT_SCHEMA=[dbo]
+GO
+/****** Object:  Table [dbo].[Categoria]    Script Date: 08/11/2018 19:45:11 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Categoria](
+	[Id] [int] NOT NULL,
+	[Codigo] [varchar](50) NOT NULL,
+	[Nome] [varchar](100) NOT NULL,
+ CONSTRAINT [PK_Categoria] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Item]    Script Date: 08/11/2018 19:45:11 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Item](
+	[Id] [int] NOT NULL,
+	[Codigo] [varchar](50) NOT NULL,
+	[Nome] [varchar](100) NOT NULL,
+	[Descricao] [varchar](200) NOT NULL,
+	[ValorUnitario] [float] NOT NULL,
+ CONSTRAINT [PK_Item] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Produto]    Script Date: 08/11/2018 19:45:11 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Produto](
+	[IdItem] [int] NOT NULL,
+	[Peso] [float] NOT NULL,
+	[Altura] [float] NOT NULL,
+ CONSTRAINT [PK_Produto] PRIMARY KEY CLUSTERED 
+(
+	[IdItem] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Servico]    Script Date: 08/11/2018 19:45:11 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Servico](
+	[IdItem] [int] NOT NULL,
+	[CodigoServico] [varchar](50) NOT NULL,
+	[IdCategoria] [int] NOT NULL,
+ CONSTRAINT [PK_Servico] PRIMARY KEY CLUSTERED 
+(
+	[IdItem] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[Produto]  WITH CHECK ADD  CONSTRAINT [FK_Item_Produto] FOREIGN KEY([IdItem])
+REFERENCES [dbo].[Item] ([Id])
+GO
+ALTER TABLE [dbo].[Produto] CHECK CONSTRAINT [FK_Item_Produto]
+GO
+ALTER TABLE [dbo].[Servico]  WITH CHECK ADD  CONSTRAINT [FK_Categoria_Servico] FOREIGN KEY([IdCategoria])
+REFERENCES [dbo].[Categoria] ([Id])
+GO
+ALTER TABLE [dbo].[Servico] CHECK CONSTRAINT [FK_Categoria_Servico]
+GO
